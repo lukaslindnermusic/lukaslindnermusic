@@ -243,15 +243,15 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
     # MOVE NODE TO WORKSPACE BUT STAY
-	  cmd-ctrl-shift-1 = 'move-node-to-workspace 1'
-	  cmd-ctrl-shift-2 = 'move-node-to-workspace 2'
-	  cmd-ctrl-shift-3 = 'move-node-to-workspace 3'
-	  cmd-ctrl-shift-4 = 'move-node-to-workspace 4'
-	  cmd-ctrl-shift-5 = 'move-node-to-workspace 5'
-	  cmd-ctrl-shift-6 = 'move-node-to-workspace 6'
-	  cmd-ctrl-shift-7 = 'move-node-to-workspace 7'
-	  cmd-ctrl-shift-8 = 'move-node-to-workspace 8'
-	  cmd-ctrl-shift-9 = 'move-node-to-workspace 9'
+	cmd-ctrl-shift-1 = 'move-node-to-workspace 1'
+	cmd-ctrl-shift-2 = 'move-node-to-workspace 2'
+	cmd-ctrl-shift-3 = 'move-node-to-workspace 3'
+	cmd-ctrl-shift-4 = 'move-node-to-workspace 4'
+	cmd-ctrl-shift-5 = 'move-node-to-workspace 5'
+	cmd-ctrl-shift-6 = 'move-node-to-workspace 6'
+	cmd-ctrl-shift-7 = 'move-node-to-workspace 7'
+	cmd-ctrl-shift-8 = 'move-node-to-workspace 8'
+	cmd-ctrl-shift-9 = 'move-node-to-workspace 9'
     cmd-ctrl-shift-0 = 'move-node-to-workspace 10'
 
     # TOGGLE BETWEEN TWO WORKSPACES
@@ -269,15 +269,15 @@ automatically-unhide-macos-hidden-apps = false
 [mode.launch.binding]
 
     ########  EXIT MODE  ########
-	  ctrl-alt-shift-esc = 'mode main'
+	ctrl-alt-shift-esc = 'mode main'
 
     ########  CONFIG  ########
     ctrl-alt-shift-comma = ['exec-and-forget open /path/to/aerospace/aerospace.toml', 'mode main'] # Open Config
     ctrl-alt-shift-period = ['reload-config', 'mode main'] # Reload Config
 
     ########  APPLICATIONS  ########
-	  ctrl-alt-shift-t = ['exec-and-forget osascript /path/to/aerospace/scripts/ghostty_terminal.scpt', 'mode main'] # Terminal
-	  ctrl-alt-shift-f = ['exec-and-forget osascript /path/to/aerospace/scripts/finder.scpt', 'mode main'] # Finder
+	ctrl-alt-shift-t = ['exec-and-forget osascript /path/to/aerospace/scripts/ghostty_terminal.scpt', 'mode main'] # Terminal
+	ctrl-alt-shift-f = ['exec-and-forget osascript /path/to/aerospace/scripts/finder.scpt', 'mode main'] # Finder
     ctrl-alt-shift-b = ['exec-and-forget osascript /path/to/aerospace/scripts/brave.scpt', 'mode main'] # Brave
     ctrl-alt-shift-w = ['exec-and-forget osascript /path/to/aerospace/scripts/librewolf.scpt', 'mode main'] # LibreWolf
     ctrl-alt-shift-c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main'] # WhatsApp
