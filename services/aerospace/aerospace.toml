@@ -135,15 +135,20 @@ automatically-unhide-macos-hidden-apps = false
     if.app-id = 'com.apple.iphonesimulator'
     run = 'layout floating'
 
-# Logic Pro
-# Main window (Tracks) → workspace 5
+# Logic Pro - Main
 [[on-window-detected]]
     if.app-id = 'com.apple.logic10'
     if.window-title-regex-substring = ' - Tracks$'
     run = 'move-node-to-workspace 5'
-# All other Logic windows → workspace 10
+# Logic Pro - Mixer
 [[on-window-detected]]
     if.app-id = 'com.apple.logic10'
+    if.window-title-regex-substring = ' - Mixer: (Tracks|All|Single)$'
+    run = 'move-node-to-workspace 10'
+# Logic Pro - Video
+[[on-window-detected]]
+    if.app-id = 'com.apple.logic10'
+    if.window-title-regex-substring = '\.(mp4|mov|m4v|avi|mkv)$'
     run = 'move-node-to-workspace 10'
 
 
