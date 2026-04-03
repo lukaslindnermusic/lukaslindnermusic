@@ -18,9 +18,10 @@ after-login-command = []
 # You can use it to add commands that run after AeroSpace startup.
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
-#after-startup-command = ['exec-and-forget /usr/local/bin/sketchybar']
+#after-startup-command = ['exec-and-forget sketchybar']
 after-startup-command = [
-  'exec-and-forget /usr/local/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=7.0'
+    'exec-and-forget /usr/local/bin/sketchybar --reload',
+    'exec-and-forget /usr/local/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=7.0'
 ]
 
 # Start AeroSpace at login
@@ -53,9 +54,7 @@ default-root-container-orientation = 'auto'
 on-focus-changed = ['move-mouse window-lazy-center']
 
 # Notify Sketchybar about workspace change
-#exec-on-workspace-change = ['/bin/bash', '-c',
-#    '/usr/local/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
-#]
+exec-on-workspace-change = ['/bin/bash', '-c', '/usr/local/bin/sketchybar --trigger aerospace_update']
 
 # You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
 # Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
@@ -80,7 +79,7 @@ automatically-unhide-macos-hidden-apps = false
     inner.vertical =   16
     outer.left =       16
     outer.bottom =     16
-    outer.top =        16 # with sketchybar: 56
+    outer.top =        50 # sketchybar
     outer.right =      16
 
 
@@ -188,10 +187,10 @@ automatically-unhide-macos-hidden-apps = false
 [mode.main.binding]
 
     ########  OTHER SHORTCUT MODES  ########
-    ctrl-alt-shift-space = 'mode launch'
+	ctrl-alt-shift-space = ['mode launch', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=launch']
 
 
-    
+
     ########  NODES  ########
 
     # FOCUS
@@ -216,15 +215,17 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-shift-cmd-right = 'join-with right'
 
     # RESIZE & NODE LAYOUT
-    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
     # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
+    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
     # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    ctrl-shift-comma = 'balance-sizes'
+    ctrl-shift-period = 'flatten-workspace-tree'
     alt-ctrl-comma = 'resize smart -50'
     alt-ctrl-period = 'resize smart +50'
-    alt-ctrl-shift-comma = 'balance-sizes'
-    alt-ctrl-shift-period = 'flatten-workspace-tree'
+    alt-ctrl-shift-comma = 'resize smart -200'
+    alt-ctrl-shift-period = 'resize smart +200'
     alt-ctrl-shift-f = 'fullscreen'
     alt-ctrl-shift-l = 'layout floating tiling'
 
@@ -288,21 +289,23 @@ automatically-unhide-macos-hidden-apps = false
 	ctrl-alt-shift-esc = 'mode main'
 
     ########  CONFIG  ########
-    ctrl-alt-shift-comma = ['exec-and-forget open /path/to/aerospace/aerospace.toml', 'mode main'] # Open Config
-    ctrl-alt-shift-period = ['reload-config', 'mode main'] # Reload Config
+    ctrl-alt-shift-comma = ['exec-and-forget open /path/to/aerospace/aerospace.toml', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Open Config
+    ctrl-alt-shift-period = ['reload-config', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Reload Config
 
     ########  APPLICATIONS  ########
-	ctrl-alt-shift-t = ['exec-and-forget osascript /path/to/aerospace/scripts/ghostty_terminal.scpt', 'mode main'] # Terminal
-	ctrl-alt-shift-f = ['exec-and-forget osascript /path/to/aerospace/scripts/finder.scpt', 'mode main'] # Finder
-    ctrl-alt-shift-b = ['exec-and-forget osascript /path/to/aerospace/scripts/brave.scpt', 'mode main'] # Brave
-    ctrl-alt-shift-w = ['exec-and-forget osascript /path/to/aerospace/scripts/librewolf.scpt', 'mode main'] # LibreWolf
-    ctrl-alt-shift-c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main'] # WhatsApp
-    ctrl-alt-shift-l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main'] # Logic
-    ctrl-alt-shift-d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main'] # Dorico
-    ctrl-alt-shift-m = ['exec-and-forget osascript /path/to/aerospace/scripts/mail.scpt', 'mode main'] # Mail
-    ctrl-alt-shift-k = ['exec-and-forget osascript /path/to/aerospace/scripts/calendar.scpt', 'mode main'] # Calendar
-    ctrl-alt-shift-e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main'] # VS Code
+	ctrl-alt-shift-t = ['exec-and-forget osascript /path/to/aerospace/scripts/ghostty_terminal.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Terminal
+	ctrl-alt-shift-f = ['exec-and-forget osascript /path/to/aerospace/scripts/finder.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Finder
+    ctrl-alt-shift-b = ['exec-and-forget osascript /path/to/aerospace/scripts/brave.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Brave
+    ctrl-alt-shift-w = ['exec-and-forget osascript /path/to/aerospace/scripts/librewolf.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # LibreWolf
+    ctrl-alt-shift-c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # WhatsApp
+    ctrl-alt-shift-l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Logic
+    ctrl-alt-shift-d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Dorico
+    ctrl-alt-shift-m = ['exec-and-forget osascript /path/to/aerospace/scripts/mail.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Mail
+    ctrl-alt-shift-k = ['exec-and-forget osascript /path/to/aerospace/scripts/calendar.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Calendar
+    ctrl-alt-shift-e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # VS Code
+	ctrl-alt-shift-v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Bitwarden
+    ctrl-alt-shift-a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Yubico Authenticator
 
     ########  SCRIPTS  ########
-    ctrl-alt-shift-s = ['exec-and-forget osascript /path/to/aerospace/scripts/ssh_sessions_ghostty.scpt', 'mode main'] # SSH Sessions
+    ctrl-alt-shift-s = ['exec-and-forget osascript /path/to/aerospace/scripts/ssh_sessions_ghostty.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # SSH Sessions
 
