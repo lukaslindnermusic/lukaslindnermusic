@@ -261,8 +261,8 @@ automatically-unhide-macos-hidden-apps = false
     # -> caps + e (Next workspace on current monitor)
     # -> caps + tab (Toggle between two workspaces)
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    alt-ctrl-w = 'exec-and-forget /path/to/aerospace/cycle_workspaces.sh prev'
-    alt-ctrl-e = 'exec-and-forget /path/to/aerospace/cycle_workspaces.sh next'
+    alt-ctrl-w = 'workspace --wrap-around prev'
+    alt-ctrl-e = 'workspace --wrap-around next'
     alt-ctrl-tab = 'workspace-back-and-forth'
 
     # FOCUS / SHOW
