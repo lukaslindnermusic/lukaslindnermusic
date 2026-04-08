@@ -134,17 +134,17 @@ automatically-unhide-macos-hidden-apps = false
     if.app-id = 'com.apple.iphonesimulator'
     run = 'layout floating'
 
-# Logic Pro - Main
+# Logic Pro – Main
 [[on-window-detected]]
     if.app-id = 'com.apple.logic10'
     if.window-title-regex-substring = ' - Tracks$'
     run = 'move-node-to-workspace 5'
-# Logic Pro - Mixer
+# Logic Pro – Mixer
 [[on-window-detected]]
     if.app-id = 'com.apple.logic10'
     if.window-title-regex-substring = ' - Mixer: (Tracks|All|Single)$'
     run = 'move-node-to-workspace 10'
-# Logic Pro - Video
+# Logic Pro – Video
 [[on-window-detected]]
     if.app-id = 'com.apple.logic10'
     if.window-title-regex-substring = '\.(mp4|mov|m4v|avi|mkv)$'
@@ -155,28 +155,37 @@ automatically-unhide-macos-hidden-apps = false
 
 
 
+
 #######  KEYBOARD SHORTCUTS  #######
 
-    # All possible keys:
-    # - Letters.        a, b, c, ..., z
-    # - Numbers.        0, 1, 2, ..., 9
-    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
-    # - F-keys.         f1, f2, ..., f20
-    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
-    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
-    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
-    #                   sectionSign (ISO keyboards only, european keyboards only)
-    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
-    #                   keypadMinus, keypadMultiply, keypadPlus
-    # - Arrows.         left, down, up, right
+# Custom Karabiner Elements Mappings (Nav Layer):
+# - caps (hold)     -> alt-ctrl                  (Activator)
+# - caps (tap)      -> escape
+# - s / u           -> + shift                   (while caps held)
+# - d / h           -> + cmd                     (while caps held)
+# - j, i, k, l      -> left, up, down, right     (while caps held)
+# - comma + period  -> f13                       (while caps held)
 
-    # All possible modifiers: cmd, alt, ctrl, shift
 
-    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+# All possible keys:
+# - Letters.        a, b, c, ..., z
+# - Numbers.        0, 1, 2, ..., 9
+# - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+# - F-keys.         f1, f2, ..., f20
+# - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+#                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+#                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+#                   sectionSign (ISO keyboards only, european keyboards only)
+# - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+#                   keypadMinus, keypadMultiply, keypadPlus
+# - Arrows.         left, down, up, right
 
-    # Infos about Binding Modes: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-    # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+# All possible modifiers: cmd, alt, ctrl, shift
 
+# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+
+# Infos about Binding Modes: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
 
 
 
@@ -187,13 +196,17 @@ automatically-unhide-macos-hidden-apps = false
 [mode.main.binding]
 
     ########  OTHER SHORTCUT MODES  ########
-	ctrl-alt-shift-space = ['mode launch', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=launch']
+    # (-> caps + space triggers Alfred)
+    # -> caps + s + space
+	alt-ctrl-shift-space = ['mode launch', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=launch']
 
 
 
     ########  NODES  ########
 
     # FOCUS
+    # -> caps + arrows
+    # -> caps + [j,i,k,l]
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
     alt-ctrl-left = 'focus left --boundaries all-monitors-outer-frame'
     alt-ctrl-down = 'focus down --boundaries all-monitors-outer-frame'
@@ -201,6 +214,8 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-right = 'focus right --boundaries all-monitors-outer-frame'
 
     # MOVE
+    # -> caps + s + arrows
+    # -> caps + s + [j,i,k,l]
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     alt-ctrl-shift-left = 'move left --boundaries all-monitors-outer-frame'
     alt-ctrl-shift-down = 'move down --boundaries all-monitors-outer-frame'
@@ -208,32 +223,50 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-shift-right = 'move right --boundaries all-monitors-outer-frame'
 
     # JOIN
+    # -> caps + s + d + arrows
+    # -> caps + s + d + [j,i,k,l]
     # See https://nikitabobko.github.io/AeroSpace/commands#join-with
     alt-ctrl-shift-cmd-left = 'join-with left'
     alt-ctrl-shift-cmd-down = 'join-with down'
     alt-ctrl-shift-cmd-up = 'join-with up'
     alt-ctrl-shift-cmd-right = 'join-with right'
 
-    # RESIZE & NODE LAYOUT
+    # RESIZE
+    # -> caps + [comma|period] (Resize Small / Balance Sizes)
+    # -> caps + s + [comma|period] (Resize Big / Flatten Workspace Tree)
     # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
     # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
-    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    ctrl-shift-comma = 'balance-sizes'
-    ctrl-shift-period = 'flatten-workspace-tree'
+    alt-ctrl-f13 = 'balance-sizes'                      # f13 = comma+period
+    alt-ctrl-shift-f13 = 'flatten-workspace-tree'       # f13 = comma+period
     alt-ctrl-comma = 'resize smart -50'
     alt-ctrl-period = 'resize smart +50'
     alt-ctrl-shift-comma = 'resize smart -200'
     alt-ctrl-shift-period = 'resize smart +200'
-    alt-ctrl-shift-f = 'fullscreen'
-    alt-ctrl-shift-l = 'layout floating tiling'
+    
+    # LAYOUT
+    # -> caps + f (Toggle Fullscreen)
+    # -> caps + s + f (Toggle Floating Layout)
+    # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
+    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    alt-ctrl-f = 'fullscreen'
+    alt-ctrl-shift-f = 'layout floating tiling'
 
 
 
     ########  WORKSPACES  ########
 
+    # CYCLING / TOGGLING
+    # -> caps + w (Previous workspace on current monitor)
+    # -> caps + e (Next workspace on current monitor)
+    # -> caps + tab (Toggle between two workspaces)
+    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    alt-ctrl-w = 'exec-and-forget /path/to/aerospace/cycle_workspaces.sh prev'
+    alt-ctrl-e = 'exec-and-forget /path/to/aerospace/cycle_workspaces.sh next'
+    alt-ctrl-tab = 'workspace-back-and-forth'
+
     # FOCUS / SHOW
+    # -> caps + [1-0]
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-ctrl-1 = 'workspace 1'
     alt-ctrl-2 = 'workspace 2'
@@ -244,9 +277,11 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-7 = 'workspace 7'
     alt-ctrl-8 = 'workspace 8'
     alt-ctrl-9 = 'workspace 9'
-    alt-ctrl-0 = 'workspace 10'
+	alt-ctrl-0 = 'workspace 10'
 
     # MOVE NODE TO WORKSPACE AND FOCUS
+    # -> caps + u + [1-5]
+    # -> caps + s + [6-0]
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
     alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
@@ -257,23 +292,21 @@ automatically-unhide-macos-hidden-apps = false
     alt-ctrl-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
     alt-ctrl-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
     alt-ctrl-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
-    alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+	alt-ctrl-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
 
     # MOVE NODE TO WORKSPACE BUT STAY
-	cmd-ctrl-shift-1 = 'move-node-to-workspace 1'
-	cmd-ctrl-shift-2 = 'move-node-to-workspace 2'
-	cmd-ctrl-shift-3 = 'move-node-to-workspace 3'
-	cmd-ctrl-shift-4 = 'move-node-to-workspace 4'
-	cmd-ctrl-shift-5 = 'move-node-to-workspace 5'
-	cmd-ctrl-shift-6 = 'move-node-to-workspace 6'
-	cmd-ctrl-shift-7 = 'move-node-to-workspace 7'
-	cmd-ctrl-shift-8 = 'move-node-to-workspace 8'
-	cmd-ctrl-shift-9 = 'move-node-to-workspace 9'
-    cmd-ctrl-shift-0 = 'move-node-to-workspace 10'
-
-    # TOGGLE BETWEEN TWO WORKSPACES
-    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    alt-ctrl-tab = 'workspace-back-and-forth'
+    # -> caps + u + h + [1-5]
+    # -> caps + s + d + [6-0]
+	alt-ctrl-shift-cmd-1 = 'move-node-to-workspace 1'
+	alt-ctrl-shift-cmd-2 = 'move-node-to-workspace 2'
+	alt-ctrl-shift-cmd-3 = 'move-node-to-workspace 3'
+	alt-ctrl-shift-cmd-4 = 'move-node-to-workspace 4'
+	alt-ctrl-shift-cmd-5 = 'move-node-to-workspace 5'
+	alt-ctrl-shift-cmd-6 = 'move-node-to-workspace 6'
+	alt-ctrl-shift-cmd-7 = 'move-node-to-workspace 7'
+	alt-ctrl-shift-cmd-8 = 'move-node-to-workspace 8'
+	alt-ctrl-shift-cmd-9 = 'move-node-to-workspace 9'
+    alt-ctrl-shift-cmd-0 = 'move-node-to-workspace 10'
 
 
 
@@ -286,26 +319,26 @@ automatically-unhide-macos-hidden-apps = false
 [mode.launch.binding]
 
     ########  EXIT MODE  ########
-	ctrl-alt-shift-esc = 'mode main'
+    # -> caps (Back to main bindings)
+	esc = ['mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main']
 
     ########  CONFIG  ########
-    ctrl-alt-shift-comma = ['exec-and-forget open /path/to/aerospace/aerospace.toml', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Open Config
-    ctrl-alt-shift-period = ['reload-config', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Reload Config
+    comma = ['exec-and-forget open /path/to/.aerospace.toml', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Open Config
+    period = ['reload-config', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Reload Config
 
     ########  APPLICATIONS  ########
-	ctrl-alt-shift-t = ['exec-and-forget osascript /path/to/aerospace/scripts/ghostty_terminal.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Terminal
-	ctrl-alt-shift-f = ['exec-and-forget osascript /path/to/aerospace/scripts/finder.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Finder
-    ctrl-alt-shift-b = ['exec-and-forget osascript /path/to/aerospace/scripts/brave.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Brave
-    ctrl-alt-shift-w = ['exec-and-forget osascript /path/to/aerospace/scripts/librewolf.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # LibreWolf
-    ctrl-alt-shift-c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # WhatsApp
-    ctrl-alt-shift-l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Logic
-    ctrl-alt-shift-d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Dorico
-    ctrl-alt-shift-m = ['exec-and-forget osascript /path/to/aerospace/scripts/mail.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Mail
-    ctrl-alt-shift-k = ['exec-and-forget osascript /path/to/aerospace/scripts/calendar.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Calendar
-    ctrl-alt-shift-e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # VS Code
-	ctrl-alt-shift-v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Bitwarden
-    ctrl-alt-shift-a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Yubico Authenticator
+	t = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ghostty_terminal.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Terminal
+	f = ['exec-and-forget osascript /path/to/aerospace/open_new_window/finder.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Finder
+    b = ['exec-and-forget osascript /path/to/aerospace/open_new_window/brave.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Brave
+    w = ['exec-and-forget osascript /path/to/aerospace/open_new_window/librewolf.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # LibreWolf
+    c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # WhatsApp
+    l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Logic
+    d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Dorico
+    m = ['exec-and-forget osascript /path/to/aerospace/open_new_window/mail.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Mail
+    k = ['exec-and-forget osascript /path/to/aerospace/open_new_window/calendar.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Calendar
+    e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # VS Code
+    v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Bitwarden
+    a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Yubico Authenticator
 
     ########  SCRIPTS  ########
-    ctrl-alt-shift-s = ['exec-and-forget osascript /path/to/aerospace/scripts/ssh_sessions_ghostty.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # SSH Sessions
-
+    s = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ssh_sessions_ghostty.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # SSH Sessions
