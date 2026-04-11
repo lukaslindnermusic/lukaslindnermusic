@@ -4,21 +4,22 @@
 ####################################
 
 
+#######  RESOURCES  #######
+# Guide: https://nikitabobko.github.io/AeroSpace/guide
+# Commands: https://nikitabobko.github.io/AeroSpace/commands
+# Goodies: https://nikitabobko.github.io/AeroSpace/goodies
 
 
-#######  BASICS & LAYOUT  #######
 
-# AFTER LOGIN
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+
+
+
+#######  STARTUP, SETUP & LAYOUT  #######
+
+# After Login
 after-login-command = []
 
-# AFTER STARTUP
-# You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
-# Available commands : https://nikitabobko.github.io/AeroSpace/commands
-#after-startup-command = ['exec-and-forget sketchybar']
+# After Startup
 after-startup-command = [
     'exec-and-forget /usr/local/bin/sketchybar --reload',
     'exec-and-forget /usr/local/bin/borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=7.0'
@@ -27,53 +28,26 @@ after-startup-command = [
 # Start AeroSpace at login
 start-at-login = true
 
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+# Normalizations
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
-accordion-padding = 30
-
-# Possible values: tiles|accordion
+# Tiles & Accordion
 default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
-# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-#               tall monitor (anything higher than wide) gets vertical orientation
+accordion-padding = 30
 default-root-container-orientation = 'auto'
 
-# Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
-# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
-# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
-# Fallback value (if you omit the key): on-focused-monitor-changed = []
-#on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-#on-focused-monitor-changed = ['move-mouse window-lazy-center']
+# Mouse follows focus when focused window changes
 on-focus-changed = ['move-mouse window-lazy-center']
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = ['/bin/bash', '-c', '/usr/local/bin/sketchybar --trigger aerospace_update']
 
-# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
-# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
-# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
-# Possible values: (qwerty|dvorak|colemak)
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
     preset = 'qwerty'
 
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
-# Possible values:
-# - Constant:     gaps.outer.top = 8
-# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
-#                 In this example, 24 is a default value when there is no match.
-#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
-#                 See:
-#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
     inner.horizontal = 16
     inner.vertical =   16
@@ -90,8 +64,7 @@ automatically-unhide-macos-hidden-apps = false
 
 #######  ASSIGNMENTS  #######
 
-#######  WORKSPACE TO MONITOR ASSIGNMENT  #######
-# See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+# Workspace to Monitor
 [workspace-to-monitor-force-assignment]
     1 = 'main'
     2 = 'main'
@@ -104,8 +77,7 @@ automatically-unhide-macos-hidden-apps = false
     9 = 'DELL'  
     10 = 'DELL'
 
-
-#######  APP WINDOW ASSIGNMENT #######
+# App-specific assignments
 # See: https://nikitabobko.github.io/AeroSpace/guide#on-window-detected-callback
 # And also: https://nikitabobko.github.io/AeroSpace/goodies#popular-apps-ids
 
@@ -159,13 +131,15 @@ automatically-unhide-macos-hidden-apps = false
 #######  KEYBOARD SHORTCUTS  #######
 
 # Custom Karabiner Elements Mappings (Nav Layer):
-# - caps (hold)     -> alt-ctrl                  (Activator)
+# - caps (hold)     -> alt-ctrl                 (Main Activator)
 # - caps (tap)      -> escape
-# - s / u           -> + shift                   (while caps held)
-# - d / h           -> + cmd                     (while caps held)
-# - j, i, k, l      -> left, up, down, right     (while caps held)
-# - comma + period  -> f13                       (while caps held)
-
+# - s / u           -> + shift                  (while caps held)
+# - d / h           -> + cmd                    (while caps held)
+# - j, i, k, l      -> left, up, down, right    (while caps held)
+# - r               -> Resize Activator         (while caps held)
+# - e               -> + shift                  (while caps+r held)
+# - j, i, k, l      -> f16, f18, f19, f17       (while caps+r held)               
+# - u               -> f20                      (while caps+r held)       
 
 # All possible keys:
 # - Letters.        a, b, c, ..., z
@@ -182,22 +156,17 @@ automatically-unhide-macos-hidden-apps = false
 
 # All possible modifiers: cmd, alt, ctrl, shift
 
-# All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-
-# Infos about Binding Modes: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# See: https://nikitabobko.github.io/AeroSpace/commands#mode
 
 
 
 ########  MAIN MODE  ########
 # Shortcuts for window management
-# 'main' binding mode must be always presented
-# Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
-    ########  OTHER SHORTCUT MODES  ########
-    # (-> caps + space triggers Alfred)
-    # -> caps + s + space
+    ########  BINDING MODES  ########
+
+    # LAUNCH MODE
+    # -> caps + s + space               (Note: caps + space triggers Alfred)
 	alt-ctrl-shift-space = ['mode launch', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=launch']
 
 
@@ -205,50 +174,45 @@ automatically-unhide-macos-hidden-apps = false
     ########  NODES  ########
 
     # FOCUS
-    # -> caps + arrows
-    # -> caps + [j,i,k,l]
-    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+    # -> caps + [j,i,k,l]               (or caps + arrows)
     alt-ctrl-left = 'focus left --boundaries all-monitors-outer-frame'
     alt-ctrl-down = 'focus down --boundaries all-monitors-outer-frame'
     alt-ctrl-up = 'focus up --boundaries all-monitors-outer-frame'
     alt-ctrl-right = 'focus right --boundaries all-monitors-outer-frame'
 
     # MOVE
-    # -> caps + s + arrows
-    # -> caps + s + [j,i,k,l]
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    # -> caps + s + [j,i,k,l]           (or caps + s + arrows)
     alt-ctrl-shift-left = 'move left --boundaries all-monitors-outer-frame'
     alt-ctrl-shift-down = 'move down --boundaries all-monitors-outer-frame'
     alt-ctrl-shift-up = 'move up --boundaries all-monitors-outer-frame'
     alt-ctrl-shift-right = 'move right --boundaries all-monitors-outer-frame'
 
-    # JOIN
-    # -> caps + s + d + arrows
-    # -> caps + s + d + [j,i,k,l]
-    # See https://nikitabobko.github.io/AeroSpace/commands#join-with
+    # JOIN WITH
+    # -> caps + s + d + [j,i,k,l]       (or caps + s + d + arrows)
     alt-ctrl-shift-cmd-left = 'join-with left'
     alt-ctrl-shift-cmd-down = 'join-with down'
     alt-ctrl-shift-cmd-up = 'join-with up'
     alt-ctrl-shift-cmd-right = 'join-with right'
 
     # RESIZE
-    # -> caps + [comma|period] (Resize Small / Balance Sizes)
-    # -> caps + s + [comma|period] (Resize Big / Flatten Workspace Tree)
-    # See: https://nikitabobko.github.io/AeroSpace/commands#balance-sizes
-    # See: https://nikitabobko.github.io/AeroSpace/commands#flatten-workspace-tree
-    # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    alt-ctrl-f13 = 'balance-sizes'                      # f13 = comma+period
-    alt-ctrl-shift-f13 = 'flatten-workspace-tree'       # f13 = comma+period
-    alt-ctrl-comma = 'resize smart -50'
-    alt-ctrl-period = 'resize smart +50'
-    alt-ctrl-shift-comma = 'resize smart -200'
-    alt-ctrl-shift-period = 'resize smart +200'
+    # Standard Resize           -> caps + r + [j,i,k,l] 
+    # Extreme Resize            -> caps + r + e + [j,i,k,l]
+    # Balancing Sizes           -> caps + r + u
+    # Flatten Workspace Tree    -> caps + r + e + u
+    alt-ctrl-f16 = 'resize width -50'
+    alt-ctrl-f17 = 'resize width +50'
+    alt-ctrl-f18 = 'resize height -50'
+    alt-ctrl-f19 = 'resize height +50'
+    alt-ctrl-shift-f16 = 'resize width -200'
+    alt-ctrl-shift-f17 = 'resize width +200'
+    alt-ctrl-shift-f18 = 'resize height -200'
+    alt-ctrl-shift-f19 = 'resize height +200'
+    alt-ctrl-f20 = 'balance-sizes'
+    alt-ctrl-shift-f20 = 'flatten-workspace-tree'
     
     # LAYOUT
-    # -> caps + f (Toggle Fullscreen)
-    # -> caps + s + f (Toggle Floating Layout)
-    # See: https://nikitabobko.github.io/AeroSpace/commands#fullscreen
-    # See: https://nikitabobko.github.io/AeroSpace/commands#layout
+    # Toggle Fullscreen         -> caps + f
+    # Toggle Floating Layout    -> caps + s + f
     alt-ctrl-f = 'fullscreen'
     alt-ctrl-shift-f = 'layout floating tiling'
 
@@ -257,17 +221,15 @@ automatically-unhide-macos-hidden-apps = false
     ########  WORKSPACES  ########
 
     # CYCLING / TOGGLING
-    # -> caps + w (Previous workspace on current monitor)
-    # -> caps + e (Next workspace on current monitor)
-    # -> caps + tab (Toggle between two workspaces)
-    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
+    # Prev (current monitor)    -> caps + w
+    # Next (current monitor)    -> caps + e
+    # Back and forth            -> caps + tab
     alt-ctrl-w = 'workspace --wrap-around prev'
     alt-ctrl-e = 'workspace --wrap-around next'
     alt-ctrl-tab = 'workspace-back-and-forth'
 
     # FOCUS / SHOW
     # -> caps + [1-0]
-    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-ctrl-1 = 'workspace 1'
     alt-ctrl-2 = 'workspace 2'
     alt-ctrl-3 = 'workspace 3'
@@ -282,7 +244,6 @@ automatically-unhide-macos-hidden-apps = false
     # MOVE NODE TO WORKSPACE AND FOCUS
     # -> caps + u + [1-5]
     # -> caps + s + [6-0]
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-ctrl-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
     alt-ctrl-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
     alt-ctrl-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
@@ -311,22 +272,19 @@ automatically-unhide-macos-hidden-apps = false
 
 
 
-
-
-
 ########  LAUNCH MODE  ########
 # Shortcuts to launch apps or run scripts
 [mode.launch.binding]
 
-    ########  EXIT MODE  ########
-    # -> caps (Back to main bindings)
+    # BACK TO MAIN
+    # -> caps
 	esc = ['mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main']
 
-    ########  CONFIG  ########
+    # AEROSPACE CONFIG
     comma = ['exec-and-forget open /path/to/.aerospace.toml', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Open Config
     period = ['reload-config', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Reload Config
 
-    ########  APPLICATIONS  ########
+    # APPLICATIONS
 	t = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ghostty_terminal.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Terminal
 	f = ['exec-and-forget osascript /path/to/aerospace/open_new_window/finder.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Finder
     b = ['exec-and-forget osascript /path/to/aerospace/open_new_window/brave.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Brave
@@ -340,5 +298,5 @@ automatically-unhide-macos-hidden-apps = false
     v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Bitwarden
     a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Yubico Authenticator
 
-    ########  SCRIPTS  ########
+    # SCRIPTS
     s = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ssh_sessions_ghostty.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # SSH Sessions
