@@ -40,8 +40,11 @@ default-root-container-orientation = 'auto'
 # Mouse follows focus when focused window changes
 on-focus-changed = ['move-mouse window-lazy-center']
 
-# Notify Sketchybar about workspace change
-exec-on-workspace-change = ['/bin/bash', '-c', '/usr/local/bin/sketchybar --trigger aerospace_update']
+# Notify Sketchybar about workspace change & move mouse if workspace is empty
+exec-on-workspace-change = [
+    '/bin/bash', '-c', 
+    '/usr/local/bin/sketchybar --trigger aerospace_update; if [ -z "$(/usr/local/bin/aerospace list-windows --workspace $AEROSPACE_FOCUSED_WORKSPACE)" ]; then /usr/local/bin/aerospace move-mouse monitor-lazy-center; fi'
+]
 
 automatically-unhide-macos-hidden-apps = false
 
