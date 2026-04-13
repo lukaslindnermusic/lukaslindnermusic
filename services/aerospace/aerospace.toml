@@ -9,7 +9,8 @@
 # Commands: https://nikitabobko.github.io/AeroSpace/commands
 # Goodies: https://nikitabobko.github.io/AeroSpace/goodies
 
-
+# Config version for compatibility and deprecations
+config-version = 2
 
 
 
@@ -45,6 +46,9 @@ exec-on-workspace-change = [
     '/bin/bash', '-c', 
     '/usr/local/bin/sketchybar --trigger aerospace_update; if [ -z "$(/usr/local/bin/aerospace list-windows --workspace $AEROSPACE_FOCUSED_WORKSPACE)" ]; then /usr/local/bin/aerospace move-mouse monitor-lazy-center; fi'
 ]
+
+# Notify Sketchybar about mode changes
+on-mode-changed = ['exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update']
 
 automatically-unhide-macos-hidden-apps = false
 
@@ -170,7 +174,7 @@ automatically-unhide-macos-hidden-apps = false
 
     # LAUNCH MODE
     # -> caps + s + space               (Note: caps + space triggers Alfred)
-	alt-ctrl-shift-space = ['mode launch', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=launch']
+	alt-ctrl-shift-space = 'mode launch'
 
 
 
@@ -281,25 +285,25 @@ automatically-unhide-macos-hidden-apps = false
 
     # BACK TO MAIN
     # -> caps
-	esc = ['mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main']
+	esc = 'mode main'
 
     # AEROSPACE CONFIG
-    comma = ['exec-and-forget open /path/to/.aerospace.toml', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Open Config
-    period = ['reload-config', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Reload Config
+    comma = ['exec-and-forget open /path/to/.aerospace.toml', 'mode main'] # Open Config
+    period = ['reload-config', 'mode main'] # Reload Config
 
     # APPLICATIONS
-	t = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ghostty_terminal.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Terminal
-	f = ['exec-and-forget osascript /path/to/aerospace/open_new_window/finder.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Finder
-    b = ['exec-and-forget osascript /path/to/aerospace/open_new_window/brave.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Brave
-    w = ['exec-and-forget osascript /path/to/aerospace/open_new_window/librewolf.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # LibreWolf
-    c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # WhatsApp
-    l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Logic
-    d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Dorico
-    m = ['exec-and-forget osascript /path/to/aerospace/open_new_window/mail.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Mail
-    k = ['exec-and-forget osascript /path/to/aerospace/open_new_window/calendar.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Calendar
-    e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # VS Code
-    v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Bitwarden
-    a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # Yubico Authenticator
+	t = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ghostty_terminal.scpt', 'mode main'] # Terminal
+	f = ['exec-and-forget osascript /path/to/aerospace/open_new_window/finder.scpt', 'mode main'] # Finder
+    b = ['exec-and-forget osascript /path/to/aerospace/open_new_window/brave.scpt', 'mode main'] # Brave
+    w = ['exec-and-forget osascript /path/to/aerospace/open_new_window/librewolf.scpt', 'mode main'] # LibreWolf
+    c = ['exec-and-forget open /Applications/WhatsApp.app', 'mode main'] # WhatsApp
+    l = ['exec-and-forget open "/Applications/Logic Pro X.app"', 'mode main'] # Logic
+    d = ['exec-and-forget open "/Applications/Dorico 6.app"', 'mode main'] # Dorico
+    m = ['exec-and-forget osascript /path/to/aerospace/open_new_window/mail.scpt', 'mode main'] # Mail
+    k = ['exec-and-forget osascript /path/to/aerospace/open_new_window/calendar.scpt', 'mode main'] # Calendar
+    e = ['exec-and-forget open "/Applications/Visual Studio Code.app"', 'mode main'] # VS Code
+    v = ['exec-and-forget open "/Applications/Bitwarden.app"', 'mode main'] # Bitwarden
+    a = ['exec-and-forget open "/Applications/Yubico Authenticator.app"', 'mode main'] # Yubico Authenticator
 
     # SCRIPTS
-    s = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ssh_sessions_ghostty.scpt', 'mode main', 'exec-and-forget /usr/local/bin/sketchybar --trigger aerospace_update AEROSPACE_MODE=main'] # SSH Sessions
+    s = ['exec-and-forget osascript /path/to/aerospace/open_new_window/ssh_sessions_ghostty.scpt', 'mode main'] # SSH Sessions
