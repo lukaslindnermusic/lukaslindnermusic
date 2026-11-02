@@ -5,7 +5,7 @@ If you are interested in that, you can listen to my [demo reel](https://www.luka
 (If you're short on time, I have a button on my [website](https://www.lukaslindner.music) that plays a random ~5-sec audio snippet each time you click it. 😊)
 
 As a hobby, I also enjoy web development — mostly working on my own filmscoring portfolio website and a custom cloud project for sharing project-related files with clients.
-I typically code in PHP and JavaScript (and of course HTML/CSS).
+I typically code in PHP, TypeScript and JavaScript.
 
 In recent years, I've gotten into self-hosting various services. I've always liked collecting and curating my own media library.
 That's also why I recently picked up Dart/Flutter to contribute to **Finamp**, a music player client made for **Jellyfin**.
